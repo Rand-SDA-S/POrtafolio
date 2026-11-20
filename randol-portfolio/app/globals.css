@@ -1,0 +1,28 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root{--bg:#F8F8F8;--fg:#021526;--panel:#fff;--bar1:#3F7BF0;--bar2:#245EDB;--sh:#021526}
+.dark{--bg:#06101d;--fg:#F8F8F8;--panel:#0d1f35;--bar1:#1a3f8f;--bar2:#0c2358;--sh:#00E5FF}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body),system-ui,sans-serif;overflow:hidden}
+h1,h2,h3,.display{font-family:var(--font-display),Impact,sans-serif;letter-spacing:-.02em}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.07;mix-blend-mode:multiply;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+:focus-visible{outline:3px solid #FF7A1A;outline-offset:2px}
+.win{background:var(--panel);border:3px solid var(--fg);box-shadow:8px 8px 0 var(--sh);display:flex;flex-direction:column;max-height:calc(100vh - 140px)}
+.bar{background:linear-gradient(var(--bar1),var(--bar2));color:#fff;display:flex;align-items:center;gap:8px;padding:4px 6px;cursor:grab;touch-action:none;user-select:none;border-bottom:3px solid var(--fg)}
+.bar button{width:24px;height:24px;border:2px solid #fff;display:grid;place-items:center;background:#245EDB}
+.bar button.x{background:#FF7A1A}
+.body{overflow:auto;padding:16px}
+.btn{border:3px solid var(--fg);background:#9BE322;color:#021526;padding:6px 14px;font-weight:700;box-shadow:4px 4px 0 var(--fg)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--fg)}
+.card{border:3px solid var(--fg);padding:12px;background:var(--panel)}
+.tag{border:2px solid var(--fg);padding:0 6px;font-size:12px;background:#00E5FF;color:#021526}
+.icon{width:96px;text-align:center;padding:6px;border:2px solid transparent}
+.icon:hover,.icon:focus-visible{border-color:var(--fg);background:#00E5FF55;transform:skew(-3deg) translateY(-2px)}
+.sky{background:radial-gradient(60% 40% at 80% 10%,#fff 0,transparent 70%),linear-gradient(160deg,#245EDB 0,#7fb0ff 55%,#F8F8F8 100%)}
+.dark .sky{background:linear-gradient(160deg,#021526,#0c2358 60%,#245EDB)}
+@keyframes drift{0%,100%{transform:translate(0,0) rotate(-4deg)}50%{transform:translate(30px,-24px) rotate(5deg)}}
+@keyframes scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+@keyframes load{from{width:0}to{width:100%}}
+.drift{animation:drift 9s ease-in-out infinite}.marq{animation:scroll 24s linear infinite;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:640px){.win{width:calc(100vw - 16px)!important}}
